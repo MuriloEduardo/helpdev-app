@@ -14,10 +14,13 @@ class PostsCreateForm extends Component
 
     public $tags;
 
+    public $amount;
+
     protected $rules = [
         'title' => 'required|string|min:10',
         'content' => 'required|string|min:100',
         'tags' => 'required|array',
+        'amount' => 'required|numeric',
     ];
 
     public function updated($property)
@@ -33,6 +36,7 @@ class PostsCreateForm extends Component
 
         $post = $user->posts()->create([
             'title' => $this->title,
+            'amount' => $this->amount,
             'content' => $this->content,
             'slug' => Str::of($this->title)->slug(),
         ]);

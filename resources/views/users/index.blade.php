@@ -24,7 +24,7 @@
                 </div>
             </div>
             @empty
-            <div>Sem participantes ainda.</div>
+            <div class="text-gray-400">Sem participantes, ainda.</div>
             @endforelse
         </div>
     </x-container>

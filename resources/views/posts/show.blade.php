@@ -5,8 +5,15 @@
         </h2>
     </x-slot>
     <x-container>
-        <small>Postado à {{ $post->created_at->diffForHumans() }}</small>
-        <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+        <div class="mb-6">
+            <span class="font-bold">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+            para quem conseguir resolver.
+        </div>
+
+        <div>
+            <small>Postado à {{ $post->created_at->diffForHumans() }}</small>
+            <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+        </div>
 
         <div class="mb-6">
             @foreach($post->tags as $tag)

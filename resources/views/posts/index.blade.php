@@ -20,9 +20,15 @@
             @forelse ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
-                <br>
-                <small>{{ $post->created_at->diffForHumans() }}</small>
-                <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+
+                <div>
+                    <span class="font-bold">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+                </div>
+
+                <div>
+                    <small>{{ $post->created_at->diffForHumans() }}</small>
+                    <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+                </div>
 
                 <div>
                     @foreach($post->tags as $tag)
@@ -31,7 +37,7 @@
                 </div>
             </li>
             @empty
-            <li>Sem postagens por aqui</li>
+            <li class="text-gray-400">Sem postagens por aqui, que tal <a href="{{ route('posts.create') }}" class="text-indigo-500">Criar um pedido de ajuda</a>?</li>
             @endforelse
         </ul>
     </x-container>

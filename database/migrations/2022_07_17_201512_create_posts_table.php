@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
+            $table->integer('amount');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
