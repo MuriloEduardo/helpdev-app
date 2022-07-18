@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ require __DIR__ . '/auth.php';
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user:slug}', [UsersController::class, 'show'])->name('users.show');
+
+Route::get('/tags', [TagsController::class, 'index'])->name('tags.index');
+Route::get('/tags/{tag:slug}', [TagsController::class, 'show'])->name('tags.show');
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');

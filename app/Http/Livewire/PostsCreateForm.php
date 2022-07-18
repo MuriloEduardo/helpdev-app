@@ -2,18 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Tag;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
 class PostsCreateForm extends Component
 {
     public $title;
-
+    
     public $content;
+
+    public $tags = [];
 
     protected $rules = [
         'title' => 'required|string|min:10',
         'content' => 'required|string|min:100',
+        'tags' => 'required|array',
     ];
 
     public function updated($property)
@@ -27,19 +31,22 @@ class PostsCreateForm extends Component
 
         $user = auth()->user();
 
-        $user->posts()->create([
+        $post = $user->posts()->create([
             'title' => $this->title,
             'content' => $this->content,
             'slug' => Str::of($this->title)->slug(),
         ]);
 
-        session()->flash('message', 'Postagem criada com sucesso!');
+        $post->tags()->sync($this->tags);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')
+            ->with('message', 'Postagem criada com sucesso!');
     }
 
     public function render()
     {
-        return view('livewire.posts-create-form');
+        return view('livewire.posts-create-form', [
+            'allTags' => Tag::all(),
+        ]);
     }
 }

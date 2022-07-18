@@ -23,6 +23,10 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         Participantes
                     </x-nav-link>
+
+                    <x-nav-link :href="route('tags.index')" :active="request()->routeIs('tags.index')">
+                        Tecnologias
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -12,6 +12,16 @@
             @error('content') <span ...>{{ $message }}</span> @enderror
         </div>
 
+        <div class="mb-6">
+            <x-label for="tags" value="Tecnologias" />
+            <select multiple wire:model="tags" id="tags" class="block w-full" required>
+                @foreach ($allTags as $tag)
+                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+            @error('tags') <span ...>{{ $message }}</span> @enderror
+        </div>
+
         <x-button>Salvar</x-button>
     </form>
 </div>
