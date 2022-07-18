@@ -10,12 +10,23 @@
     </x-slot>
 
     <x-container>
+        @if (session()->has('message'))
+        <div class="text-green-500 mb-6">
+            {{ session('message') }}
+        </div>
+        @endif
+
         <ul>
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
+                <br>
+                <small>{{ $post->created_at->diffForHumans() }}</small>
+                <small>por <a href="{{ route('users.show', $post->user) }}">{{ $post->user->name }}</a></small>
             </li>
-            @endforeach
+            @empty
+            <li>Sem postagens por aqui</li>
+            @endforelse
         </ul>
     </x-container>
 </x-app-layout>

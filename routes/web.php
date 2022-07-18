@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('/users/{user:slug}', [UsersController::class, 'show'])->name('users.show');
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');

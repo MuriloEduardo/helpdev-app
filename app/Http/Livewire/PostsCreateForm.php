@@ -12,8 +12,8 @@ class PostsCreateForm extends Component
     public $content;
 
     protected $rules = [
-        'title' => 'required',
-        'content' => 'required',
+        'title' => 'required|string|min:10',
+        'content' => 'required|string|min:100',
     ];
 
     public function updated($property)
@@ -32,6 +32,10 @@ class PostsCreateForm extends Component
             'content' => $this->content,
             'slug' => Str::of($this->title)->slug(),
         ]);
+
+        session()->flash('message', 'Postagem criada com sucesso!');
+
+        return redirect()->route('posts.index');
     }
 
     public function render()
