@@ -8,12 +8,23 @@
     </x-slot>
 
     <x-container>
-        <ul>
+        <div class="flex flex-wrap">
             @foreach ($tags as $tag)
-            <li>
+            <div class="p-3">
                 <a href="{{ route('tags.show', $tag) }}" class="text-indigo-500">{{ $tag->title }}</a>
-            </li>
+                <br>
+
+                <div>
+                    <small>
+                        {{ $tag->posts->count() }} postagens
+                    </small>
+                    <span class="text-gray-300">|</span>
+                    <small>
+                        {{ $tag->users->count() }} dev's
+                    </small>
+                </div>
+            </div>
             @endforeach
-        </ul>
+        </div>
     </x-container>
 </x-app-layout>

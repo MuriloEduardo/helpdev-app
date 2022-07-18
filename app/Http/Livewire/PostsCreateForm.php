@@ -12,7 +12,7 @@ class PostsCreateForm extends Component
     
     public $content;
 
-    public $tags = [];
+    public $tags;
 
     protected $rules = [
         'title' => 'required|string|min:10',

@@ -26,6 +26,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware(['auth'])->name('profile');
+
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user:slug}', [UsersController::class, 'show'])->name('users.show');
 

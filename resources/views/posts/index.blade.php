@@ -10,7 +10,7 @@
     </x-slot>
 
     <x-container>
-        @if (session()->has('message'))
+        @if (session('message'))
         <div class="text-green-500 mb-6">
             {{ session('message') }}
         </div>

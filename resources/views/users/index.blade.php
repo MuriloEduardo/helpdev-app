@@ -8,14 +8,24 @@
     </x-slot>
 
     <x-container>
-        <ul>
+        <div class="flex flex-wrap">
             @forelse ($users as $user)
-            <li>
+            <div>
                 <a href="{{ route('users.show', $user) }}" class="text-indigo-500">{{ $user->name }}</a>
-            </li>
+                <br>
+                <div>
+                    <small>
+                        {{ $user->posts->count() }} postagens
+                    </small>
+                    <span class="text-gray-300">|</span>
+                    <small>
+                        {{ $user->tags->count() }} habilidades
+                    </small>
+                </div>
+            </div>
             @empty
-            <li>Sem participantes ainda.</li>
+            <div>Sem participantes ainda.</div>
             @endforelse
-        </ul>
+        </div>
     </x-container>
 </x-app-layout>
