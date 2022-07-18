@@ -6,7 +6,7 @@
     </x-slot>
     <x-container>
         <div class="mb-6">
-            <span class="font-bold">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+            <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
             para quem conseguir resolver.
         </div>
 

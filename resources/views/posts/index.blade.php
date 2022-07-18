@@ -22,7 +22,7 @@
                 <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
 
                 <div>
-                    <span class="font-bold">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+                    <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
                 </div>
 
                 <div>
