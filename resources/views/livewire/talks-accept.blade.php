@@ -1,0 +1,1 @@
+<button wire:click="accept()" class="px-4 py-2 bg-yellow-500 border border-transparent rounded-md text-white tracking-widest hover:bg-yellow-700 active:bg-yellow-900 focus:outline-none focus:border-yellow-900 focus:ring ring-yellow-300 disabled:opacity-25 transition ease-in-out duration-150">Aceitar ajuda</button>

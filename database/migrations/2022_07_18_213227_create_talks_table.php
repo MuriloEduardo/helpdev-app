@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->id();
+            $table->boolean('accepted')->default(false);
             $table->foreignId('post_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();

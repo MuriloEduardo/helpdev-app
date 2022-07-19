@@ -17,6 +17,13 @@
                     <small>Sejam objetivos nas conversas e saibem que qualquer coisa tudo estará seguro e transparente para ambos.</small>
                 </div>
 
+
+                @can(['post-owner', 'accept-talk'], $talk)
+                <div class="my-4">
+                    <livewire:talks-accept :talk="$talk" />
+                </div>
+                @endcan
+
                 <div class="mt-6">
                     <livewire:messages-create-form />
                 </div>
