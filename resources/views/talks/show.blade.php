@@ -17,21 +17,15 @@
             <livewire:talks-list :talk="$talk" />
 
             <div class="col-span-3">
-                @can('post-owner', $talk->post)
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-b border-gray-200">
                     <h4 class="text-xl text-green-600"><strong>Opa!</strong> {{ $talk->user->name }} <strong>disse que sabe te ajudar!</strong></h4>
                     <p>Bora trocar uma ideia?</p>
                     <small>Sejam objetivos nas conversas e saibem que qualquer coisa tudo estará seguro e transparente para ambos.</small>
                 </div>
-                @endcan
 
-                @can('post-owner', $talk->post)
                 <div class="my-4">
-                    @if(!$talk->accepted)
                     <livewire:talks-accept :talk="$talk" />
-                    @endif
                 </div>
-                @endcan
 
                 <div class="mt-6">
                     <livewire:messages-create-form />

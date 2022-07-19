@@ -9,11 +9,7 @@
             <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
         </div>
 
-        @cannot('post-owner', $post)
-        @if (!$talk)
         <livewire:talks-create :post="$post" />
-        @endif
-        @endcannot
 
         @if ($talk)
         <a href="{{ route('talks.show', $talk) }}" class="p-3 bg-gray-300 text-sm rounded">Ir para conversas</a>

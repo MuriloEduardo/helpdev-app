@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Enums\PostStatus;
 use Livewire\Component;
 
 class TalksAccept extends Component
@@ -10,8 +11,8 @@ class TalksAccept extends Component
 
     public function accept()
     {
-        $this->talk->update([
-            'accepted' => true,
+        $this->talk->post->update([
+            'status' => PostStatus::ConversaAceita,
         ]);
 
         return redirect()
