@@ -26,6 +26,6 @@
             @endforeach
         </div>
 
-        <article>{{ $post->content }}</article>
+        <article class="break-words">{{ $post->content }}</article>
     </x-container>
 </x-app-layout>

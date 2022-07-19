@@ -11,7 +11,7 @@
 
     <x-container>
         @if (session('message'))
-        <div class="text-green-500 mb-6">
+        <div class="text-green-600 mb-6">
             {{ session('message') }}
         </div>
         @endif

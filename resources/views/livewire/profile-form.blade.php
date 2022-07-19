@@ -2,7 +2,7 @@
     <div class="mb-6">
         <x-label for="name" value="Como devemos lhe chamar?" />
         <x-input type="text" wire:model.lazy="user.name" id="name" value="{{ $user->name }}" class="block w-full" required autofocus />
-        @error('title') <span ...>{{ $message }}</span> @enderror
+        @error('user.name') <span ...>{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-6">

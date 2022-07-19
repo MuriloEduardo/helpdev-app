@@ -12,7 +12,7 @@ class ProfileForm extends Component
     public $tags;
 
     protected $rules = [
-        'user.name' => 'required|string|min:10',
+        'user.name' => 'required|string',
         'tags' => 'array',
     ];
 
