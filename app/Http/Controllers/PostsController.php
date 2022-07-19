@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Talk;
 
 class PostsController extends Controller
 {
@@ -40,11 +39,19 @@ class PostsController extends Controller
     public function show(Post $post)
     {
         $user = auth()->user();
-        $talk = Talk::whereRelation('post', 'user_id', $user->id)->first();
+        $talk = null;
+
+        if ($user->id === $post->user->id) {
+            $talk = $post->talks->first();
+        } else {
+            $talk = $post->talks->filter(function ($talk) use ($user) {
+                return $talk->user->id === $user->id;
+            })->first();
+        }
 
         return view('posts.show', [
             'post' => $post,
-            'talk' => $user->talk || $talk,
+            'talk' => $talk,
         ]);
     }
 

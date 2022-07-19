@@ -1,5 +1,4 @@
-<div @class([
-    'bg-white rounded py-3' => isset($talk),
+<div @class([ 'bg-white rounded py-3 overflow-hidden shadow-sm sm:rounded-lg border-b border-gray-200'=> isset($talk),
     ])>
     @forelse($posts as $post)
     <div>
@@ -14,7 +13,15 @@
                 ])
                 href="{{ route('talks.show', $_talk) }}"
                 >
-                <span class="text-indigo-500">{{ $post->user->name }}</span>
+
+                <span class="text-indigo-500">
+                    @if($_talk->user->id === auth()->user()->id)
+                    {{ $post->user->name }}
+                    @else
+                    {{ $_talk->user->name }}
+                    @endif
+                </span>
+
                 <small class="text-gray-400">{{ $_talk->created_at->diffForHumans() }}</small>
             </a>
         </div>

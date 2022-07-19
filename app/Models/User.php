@@ -57,9 +57,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Talk::class);
     }
-
-    public function talk()
-    {
-        return $this->hasOne(Talk::class);
-    }
 }

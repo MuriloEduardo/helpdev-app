@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\Talk;
 
 class TalksController extends Controller
@@ -14,11 +13,7 @@ class TalksController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-
-        return view('talks.index', [
-            'posts' => $posts,
-        ]);
+        return view('talks.index');
     }
 
     /**

@@ -10,7 +10,7 @@
     <x-container>
         <div class="flex flex-wrap">
             @foreach ($tags as $tag)
-            <div class="p-3">
+            <div class="m-3 bg-white overflow-hidden shadow-sm sm:rounded-lg p-3 border-b border-gray-200">
                 <a href="{{ route('tags.show', $tag) }}" class="text-indigo-500">{{ $tag->title }}</a>
                 <br>
 

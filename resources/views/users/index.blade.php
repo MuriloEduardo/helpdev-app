@@ -10,7 +10,7 @@
     <x-container>
         <div class="flex flex-wrap">
             @forelse ($users as $user)
-            <div>
+            <div class="m-3 bg-white overflow-hidden shadow-sm sm:rounded-lg p-3 border-b border-gray-200">
                 <a href="{{ route('users.show', $user) }}" class="text-indigo-500">{{ $user->name }}</a>
                 <br>
                 <div>

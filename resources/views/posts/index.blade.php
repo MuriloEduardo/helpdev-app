@@ -16,29 +16,27 @@
         </div>
         @endif
 
-        <ul>
-            @forelse ($posts as $post)
-            <li class="my-6">
-                <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
+        @forelse ($posts as $post)
+        <div class="my-4 bg-white overflow-hidden shadow-sm sm:rounded-lg p-3 border-b border-gray-200">
+            <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
 
-                <div>
-                    <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
-                </div>
+            <div>
+                <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+            </div>
 
-                <div>
-                    <small>{{ $post->created_at->diffForHumans() }}</small>
-                    <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
-                </div>
+            <div>
+                <small>{{ $post->created_at->diffForHumans() }}</small>
+                <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+            </div>
 
-                <div>
-                    @foreach($post->tags as $tag)
-                    <a href="{{ route('tags.show', $tag) }}" class="text-xs text-indigo-300 inline-block rounded bg-indigo-100 px-1">{{ $tag->title }}</a>
-                    @endforeach
-                </div>
-            </li>
-            @empty
-            <li class="text-gray-400">Sem postagens por aqui, que tal <a href="{{ route('posts.create') }}" class="text-indigo-500">Criar um pedido de ajuda</a>?</li>
-            @endforelse
-        </ul>
+            <div>
+                @foreach($post->tags as $tag)
+                <a href="{{ route('tags.show', $tag) }}" class="text-xs text-indigo-300 inline-block rounded bg-indigo-100 px-1">{{ $tag->title }}</a>
+                @endforeach
+            </div>
+        </div>
+        @empty
+        <div class="text-gray-400">Sem postagens por aqui, que tal <a href="{{ route('posts.create') }}" class="text-indigo-500">Criar um pedido de ajuda</a>?</div>
+        @endforelse
     </x-container>
 </x-app-layout>
