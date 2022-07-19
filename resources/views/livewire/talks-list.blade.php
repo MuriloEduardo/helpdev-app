@@ -1,17 +1,21 @@
-<div>
-    @forelse($posts as $_post)
+<div @class([
+    'bg-white rounded py-3' => isset($talk),
+    ])>
+    @forelse($posts as $post)
     <div>
-        <h3 @class([
-            'truncate hover:text-clip hover:whitespace-normal' => isset($post),
-            'text-gray-400' => isset($post) && $post->id === $_post->id,
-            'text-xl' => !isset($post)
-        ])>{{ $_post->title }}</h3>
-        
-        @foreach($_post->talks as $talk)
-        <div class="my-3">
-            <a href="{{ route('talks.show', $talk) }}" class="flex justify-between items-center">
-                <span class="text-indigo-500">{{ $_post->user->name }}</span>
-                <small>{{ $talk->created_at->diffForHumans() }}</small>
+        <h3 @class([ 'p-3' , 'truncate hover:text-clip hover:whitespace-normal'=> isset($talk),
+            'text-gray-400' => isset($talk) && $post->id === $talk->post->id,
+            'text-xl' => !isset($talk)
+            ])>{{ $post->title }}</h3>
+
+        @foreach($post->talks as $_talk)
+        <div>
+            <a @class([ 'flex justify-between items-center hover:bg-gray-100 p-3' , 'bg-gray-100'=> isset($talk) && $talk->id === $_talk->id,
+                ])
+                href="{{ route('talks.show', $_talk) }}"
+                >
+                <span class="text-indigo-500">{{ $post->user->name }}</span>
+                <small class="text-gray-400">{{ $_talk->created_at->diffForHumans() }}</small>
             </a>
         </div>
         @empty

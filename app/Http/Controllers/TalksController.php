@@ -16,7 +16,9 @@ class TalksController extends Controller
     {
         $posts = Post::all();
 
-        return view('talks.index', ['posts' => $posts]);
+        return view('talks.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**

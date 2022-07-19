@@ -9,7 +9,7 @@ class TalksList extends Component
 {
     public $posts;
 
-    public $post;
+    public $talk;
 
     public function mount()
     {

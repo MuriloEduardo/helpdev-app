@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Talk;
 
 class PostsController extends Controller
 {
@@ -15,7 +16,9 @@ class PostsController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
@@ -36,7 +39,13 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', ['post' => $post]);
+        $user = auth()->user();
+        $talk = Talk::whereRelation('post', 'user_id', $user->id)->first();
+
+        return view('posts.show', [
+            'post' => $post,
+            'talk' => $user->talk || $talk,
+        ]);
     }
 
     /**

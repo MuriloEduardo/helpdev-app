@@ -7,10 +7,17 @@
     <x-container>
         <div class="mb-4">
             <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
-            para quem conseguir resolver.
         </div>
 
-        <livewire:talks-create-form :post="$post" />
+        @cannot('post-owner', $post)
+        @if (!$talk)
+        <livewire:talks-create :post="$post" />
+        @endif
+        @endcannot
+
+        @if ($talk)
+        <a href="{{ route('talks.show', $talk) }}" class="p-3 bg-gray-300 text-sm rounded">Ir para conversas</a>
+        @endif
 
         <div class="mt-4">
             <small>Postado à {{ $post->created_at->diffForHumans() }}</small>

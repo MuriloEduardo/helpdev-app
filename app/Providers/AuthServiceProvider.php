@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Talk;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -27,12 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('post-owner', function (User $user, Talk $talk) {
-            return $user->id === $talk->post->user->id;
-        });
-
-        Gate::define('accept-talk', function (User $user, Talk $talk) {
-            return !$talk->accepted;
+        Gate::define('post-owner', function (User $user, Post $post) {
+            return $user->id === $post->user->id;
         });
     }
 }
