@@ -5,12 +5,14 @@
         </h2>
     </x-slot>
     <x-container>
-        <div class="mb-6">
+        <div class="mb-4">
             <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
             para quem conseguir resolver.
         </div>
 
-        <div>
+        <livewire:talks-create-form :post="$post" />
+
+        <div class="mt-4">
             <small>Postado à {{ $post->created_at->diffForHumans() }}</small>
             <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
         </div>

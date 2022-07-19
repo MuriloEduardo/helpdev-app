@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\TalksController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,8 +26,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-require __DIR__ . '/auth.php';
 
 Route::get('/profile', function () {
     return view('profile');
@@ -39,3 +40,6 @@ Route::get('/tags/{tag:slug}', [TagsController::class, 'show'])->name('tags.show
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
 Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
+
+Route::get('/talks', [TalksController::class, 'index'])->name('talks.index');
+Route::get('/talks/{talk}', [TalksController::class, 'show'])->name('talks.show');

@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function talks()
+    {
+        return $this->hasMany(Talk::class);
+    }
 }
