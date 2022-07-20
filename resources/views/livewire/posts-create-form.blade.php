@@ -2,13 +2,13 @@
     <div class="mb-6">
         <x-label for="title" value="Título" />
         <x-input type="text" wire:model.lazy="title" id="title" :value="old('title')" class="block w-full" required autofocus />
-        @error('title') <span ...>{{ $message }}</span> @enderror
+        @error('title') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-6">
         <x-label for="content" value="Conteúdo" />
         <x-textarea wire:model.lazy="content" id="content" :value="old('content')" class="block w-full" required />
-        @error('content') <span ...>{{ $message }}</span> @enderror
+        @error('content') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-6">
@@ -18,7 +18,7 @@
             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
             @endforeach
         </x-multiple-select>
-        @error('tags') <span ...>{{ $message }}</span> @enderror
+        @error('tags') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-6">
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        @error('amount') <span ...>{{ $message }}</span> @enderror
+        @error('amount') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <x-button>Salvar</x-button>

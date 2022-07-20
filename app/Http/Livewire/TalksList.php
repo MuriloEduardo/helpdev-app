@@ -21,16 +21,17 @@ class TalksList extends Component
             ->orWhereRelation('talks', 'user_id', $user->id)
             ->get();
 
-        $this->posts = $this->posts->filter(function ($post) use ($user) {
-            $post->talks = $post->talks->filter(function ($talk) use ($post, $user) {
-                if ($post->user_id !== $user->id) {
-                    return $talk->user_id === $user->id;
-                } else {
-                    return $talk;
-                }
-            });
+        $this->posts = $this->posts->map(function ($post) use ($user) {
+            $post->talks = $post->talks
+                ->filter(function ($talk) use ($post, $user) {
+                    if ($post->user_id !== $user->id) {
+                        return $talk->user_id === $user->id;
+                    } else {
+                        return $talk;
+                    }
+                });
 
-            return $post->talks;
+            return $post;
         });
     }
 

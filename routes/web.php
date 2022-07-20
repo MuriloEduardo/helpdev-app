@@ -23,14 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware(['auth'])->name('profile');
-
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user:slug}', [UsersController::class, 'show'])->name('users.show');
 
@@ -41,7 +33,16 @@ Route::get('/posts', [PostsController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create');
 Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
 
-Route::get('/talks', [TalksController::class, 'index'])->name('talks.index')
-    ->middleware(['auth']);
-Route::get('/talks/{talk}', [TalksController::class, 'show'])->name('talks.show')
-    ->middleware(['auth']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+
+    Route::get('/talks', [TalksController::class, 'index'])->name('talks.index');
+    Route::get('/talks/{talk}', [TalksController::class, 'show'])->name('talks.show');
+});

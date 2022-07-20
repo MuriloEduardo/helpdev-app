@@ -41,12 +41,14 @@ class PostsController extends Controller
         $user = auth()->user();
         $talk = null;
 
-        if ($user->id === $post->user->id) {
-            $talk = $post->talks->first();
-        } else {
-            $talk = $post->talks->filter(function ($talk) use ($user) {
-                return $talk->user->id === $user->id;
-            })->first();
+        if ($user) {
+            if ($user->id === $post->user->id) {
+                $talk = $post->talks->first();
+            } else {
+                $talk = $post->talks->filter(function ($talk) use ($user) {
+                    return $talk->user->id === $user->id;
+                })->first();
+            }
         }
 
         return view('posts.show', [

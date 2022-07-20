@@ -2,7 +2,7 @@
     <div class="mb-6">
         <x-label for="name" value="Como devemos lhe chamar?" />
         <x-input type="text" wire:model.lazy="user.name" id="name" value="{{ $user->name }}" class="block w-full" required autofocus />
-        @error('user.name') <span ...>{{ $message }}</span> @enderror
+        @error('user.name') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <div class="mb-6">
@@ -13,7 +13,7 @@
             <option value="{{ $tag->id }}">{{ $tag->title }}</option>
             @endforeach
         </x-multiple-select>
-        @error('tags') <span ...>{{ $message }}</span> @enderror
+        @error('tags') <span class="text-red-600" ...>{{ $message }}</span> @enderror
     </div>
 
     <x-button>Salvar</x-button>

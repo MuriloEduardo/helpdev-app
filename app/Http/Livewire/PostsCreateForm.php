@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\PostCreated;
 use App\Models\Tag;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 class PostsCreateForm extends Component
 {
     public $title;
-    
+
     public $content;
 
     public $tags;
@@ -17,7 +18,7 @@ class PostsCreateForm extends Component
     public $amount;
 
     protected $rules = [
-        'title' => 'required|string|min:10',
+        'title' => 'required|string|min:10|max:125',
         'content' => 'required|string|min:100',
         'tags' => 'required|array',
         'amount' => 'required|numeric',
@@ -42,6 +43,8 @@ class PostsCreateForm extends Component
         ]);
 
         $post->tags()->sync($this->tags);
+
+        PostCreated::dispatch($post);
 
         return redirect()->route('posts.index')
             ->with('message', 'Postagem criada com sucesso!');

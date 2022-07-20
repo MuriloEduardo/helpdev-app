@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
+        <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Todas postagens
+                Pedidos de outros dev's
             </h2>
 
-            <a href="{{ route('posts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Criar pedido de ajuda</a>
+            <a href="{{ route('posts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Criar pedido de ajuda</a>
         </div>
     </x-slot>
 
@@ -20,19 +20,17 @@
         <div class="my-4 bg-white overflow-hidden shadow-sm sm:rounded-lg p-3 border-b border-gray-200">
             <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
 
-            <div>
-                <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
-            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    @foreach($post->tags as $tag)
+                    <a href="{{ route('tags.show', $tag) }}" class="text-xs text-indigo-300 inline-block rounded bg-indigo-100 px-1">{{ $tag->title }}</a>
+                    @endforeach
+                </div>
 
-            <div>
-                <small>{{ $post->created_at->diffForHumans() }}</small>
-                <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
-            </div>
-
-            <div>
-                @foreach($post->tags as $tag)
-                <a href="{{ route('tags.show', $tag) }}" class="text-xs text-indigo-300 inline-block rounded bg-indigo-100 px-1">{{ $tag->title }}</a>
-                @endforeach
+                <div>
+                    <small>{{ $post->created_at->diffForHumans() }}</small>
+                    <small>por <a href="{{ route('users.show', $post->user) }}" class="text-indigo-300">{{ $post->user->name }}</a></small>
+                </div>
             </div>
         </div>
         @empty
