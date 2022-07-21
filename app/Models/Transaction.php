@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\TransactionStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Talk extends Model
+class Transaction extends Model
 {
     use HasFactory;
 
@@ -15,22 +16,27 @@ class Talk extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'post_id',
-        'accepted',
+        'status',
+        'amount',
+        'talk_id',
     ];
 
-    public function post()
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => TransactionStatus::class,
+    ];
+
+    public function talk()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Talk::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
     }
 }

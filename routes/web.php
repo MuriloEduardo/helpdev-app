@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TalksController;
+use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,4 +46,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/talks', [TalksController::class, 'index'])->name('talks.index');
     Route::get('/talks/{talk}', [TalksController::class, 'show'])->name('talks.show');
+
+    Route::get('/transactions', [TransactionsController::class, 'index'])->name('transactions.index');
 });

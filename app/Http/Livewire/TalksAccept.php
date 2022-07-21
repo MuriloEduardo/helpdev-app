@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Enums\PostStatus;
+use App\Enums\TransactionStatus;
 use Livewire\Component;
 
 class TalksAccept extends Component
@@ -13,6 +14,12 @@ class TalksAccept extends Component
     {
         $this->talk->post->update([
             'status' => PostStatus::ConversaAceita,
+        ]);
+
+        $this->talk->post->user->transactions()->create([
+            'talk_id' => $this->talk->id,
+            'amount' => -$this->talk->post->amount,
+            'status' => TransactionStatus::Confirmado,
         ]);
 
         return redirect()
