@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Suas conversas
+                Sem conversas...
             </h2>
         </div>
     </x-slot>
     <x-container>
-        <livewire:talks-list />
+        <p class="text-lg">Não seja timido, ajude alguém 🤓</p>
     </x-container>
 </x-app-layout>

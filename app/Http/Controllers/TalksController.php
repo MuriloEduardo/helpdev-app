@@ -13,7 +13,14 @@ class TalksController extends Controller
      */
     public function index()
     {
-        return view('talks.index');
+        $user = auth()->user();
+        $talk = $user->talks->first();
+
+        if (!$talk) {
+            return view('talks.index');
+        }
+
+        return redirect()->route('talks.show', $talk);
     }
 
     /**
@@ -26,5 +33,4 @@ class TalksController extends Controller
     {
         return view('talks.show', ['talk' => $talk]);
     }
-
 }

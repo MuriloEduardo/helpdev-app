@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Events\PostCreated;
 use App\Models\Tag;
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -24,6 +25,11 @@ class PostsCreateForm extends Component
         'amount' => 'required|numeric',
     ];
 
+    public function user(): User
+    {
+        return auth()->user();
+    }
+
     public function updated($property)
     {
         $this->validateOnly($property);
@@ -33,9 +39,7 @@ class PostsCreateForm extends Component
     {
         $this->validate();
 
-        $user = auth()->user();
-
-        $post = $user->posts()->create([
+        $post = $this->user()->posts()->create([
             'title' => $this->title,
             'amount' => $this->amount,
             'content' => $this->content,
