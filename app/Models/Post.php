@@ -21,6 +21,7 @@ class Post extends Model
         'status',
         'amount',
         'content',
+        'completed_at',
     ];
 
     /**

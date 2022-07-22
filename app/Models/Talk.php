@@ -17,6 +17,7 @@ class Talk extends Model
     protected $fillable = [
         'post_id',
         'accepted',
+        'completed_at',
     ];
 
     public function post()

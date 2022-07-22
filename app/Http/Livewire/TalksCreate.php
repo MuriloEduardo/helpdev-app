@@ -2,17 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class TalksCreate extends Component
 {
-    public $user;
-
     public $post;
 
-    public function mount()
+    public function user(): User
     {
-        $this->user = auth()->user();
+        return auth()->user();
     }
 
     public function render()
@@ -22,7 +21,7 @@ class TalksCreate extends Component
 
     public function store()
     {
-        $talk = $this->user->talks()->create([
+        $talk = $this->user()->talks()->create([
             'post_id' => $this->post->id,
         ]);
 

@@ -46,6 +46,8 @@
                             </div>
                             @elseif (!$transaction->talk_id)
                             <span>Saldo adicionado</span>
+                            @else
+                            <span>Recebimento de recompensa</span>
                             @endif
                     </td>
                     <td class="text-right">{{ $transaction->created_at }}</td>

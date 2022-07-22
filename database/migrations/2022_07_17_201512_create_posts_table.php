@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->tinyInteger('status')->default(0);
             $table->foreignId('user_id')->constrained();
+            $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });
     }

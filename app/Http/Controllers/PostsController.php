@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PostStatus;
 use App\Models\Post;
 
 class PostsController extends Controller
@@ -13,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('status', PostStatus::Aberta)
+            ->get();
 
         return view('posts.index', [
             'posts' => $posts,
