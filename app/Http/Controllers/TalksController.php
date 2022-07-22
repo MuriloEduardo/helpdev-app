@@ -14,7 +14,9 @@ class TalksController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $talk = $user->talks->first();
+        $talk = Talk::where('user_id', $user->id)
+            ->orWhereRelation('post', 'user_id', $user->id)
+            ->first();
 
         if (!$talk) {
             return view('talks.index');

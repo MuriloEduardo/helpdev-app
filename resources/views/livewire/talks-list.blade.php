@@ -6,12 +6,12 @@
 
         @foreach($post->talks as $_talk)
         <div>
-            <a @class([ 'flex justify-between items-center hover:bg-gray-100 p-3' , 'bg-gray-100'=> $talk->id === $_talk->id,
+            <a @class([ 'flex justify-between items-center hover:bg-gray-100 p-3' , 'bg-gray-100 cursor-default'=> $talk->id === $_talk->id,
                 ])
                 href="{{ route('talks.show', $_talk) }}"
                 >
 
-                <span class="text-indigo-500">
+                <span @class(['text-indigo-500'=> $talk->id !== $_talk->id])>
                     @if($_talk->user->id === auth()->user()->id)
                     {{ $post->user->name }}
                     @else

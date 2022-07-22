@@ -48,4 +48,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/talks/{talk}', [TalksController::class, 'show'])->name('talks.show');
 
     Route::get('/transactions', [TransactionsController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/create', [TransactionsController::class, 'create'])->name('transactions.create');
 });

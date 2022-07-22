@@ -28,6 +28,7 @@
 
                     <div class="my-4">
                         <livewire:talks-accept :talk="$talk" />
+                        <a href="{{ route('transactions.create') }}">Adicionar saldo</a>
                     </div>
 
                     <div class="mt-6">
