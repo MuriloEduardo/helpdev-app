@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class TransactionsController extends Controller
 {
     /**
@@ -17,7 +15,7 @@ class TransactionsController extends Controller
 
         return view('transactions.index', [
             'transactions' => $user->transactions,
-            'balance' => $user->transactions->sum('amount'),
+            'balance' => $user->balance,
         ]);
     }
 

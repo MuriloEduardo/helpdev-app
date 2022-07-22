@@ -36,7 +36,7 @@
 
                 <a href="{{ route('transactions.index') }}" class="mr-3" title="Sua carteira">
                     <div class="flex">
-                        <span class="mr-1">R${{ number_format(auth()->user()->transactions->sum('amount'), 2, ',', '.')
+                        <span class="mr-1">R${{ number_format(auth()->user()->balance, 2, ',', '.')
                             }}</span>
                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
