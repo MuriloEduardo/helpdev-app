@@ -412,12 +412,12 @@
                 <a href="{{ route('posts.index') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
                     Postagens
                 </a>
-    
+
                 <a href="{{ route('users.index') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
                     Participantes
                 </a>
             </div>
-            
+
             @auth
             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
             @else

@@ -7,7 +7,7 @@
     <x-container>
         <small>Membro à {{ $user->created_at->diffForHumans() }}</small>
 
-        <div class="mt-6 flex justify-between">    
+        <div class="mt-6 flex justify-between">
             <div>
                 <h3 class="text-xl mb-3">Postagens deste dev</h3>
                 <ul>

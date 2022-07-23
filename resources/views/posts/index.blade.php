@@ -5,7 +5,7 @@
                 Pedidos de outros dev's
             </h2>
 
-            <a href="{{ route('posts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">Criar pedido de ajuda</a>
+            <a href="{{ route('posts.create') }}" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-green-600 active:bg-green-600 focus:outline-none focus:border-green-600 focus:ring ring-green-600 disabled:opacity-25 transition ease-in-out duration-150">Criar pedido de ajuda</a>
         </div>
     </x-slot>
 
@@ -18,7 +18,8 @@
 
         @forelse ($posts as $post)
         <div class="my-4 bg-white overflow-hidden shadow-sm sm:rounded-lg p-3 border-b border-gray-200">
-            <a href="{{ route('posts.show', $post) }}" class="text-indigo-500">{{ $post->title }}</a>
+            <a href="{{ route('posts.show', $post) }}" class="text-indigo-500 text-lg">{{ $post->title }}</a>
+            <p class="text-sm">{{ Str::limit($post->content, 300, $end='...') }}</p>
 
             <div class="flex items-center justify-between">
                 <div>
