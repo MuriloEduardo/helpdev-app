@@ -4,14 +4,19 @@ namespace App\Http\Livewire;
 
 use App\Enums\PostStatus;
 use App\Enums\TransactionStatus;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class TalksAccept extends Component
 {
+    use AuthorizesRequests;
+
     public $talk;
 
     public function accept()
     {
+        $this->authorize('accept-talk', $this->talk);
+
         $this->talk->post->update([
             'status' => PostStatus::ConversaAceita,
         ]);

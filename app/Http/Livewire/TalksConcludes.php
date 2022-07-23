@@ -3,14 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Enums\TransactionStatus;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class TalksConcludes extends Component
 {
+    use AuthorizesRequests;
+
     public $talk;
 
     public function conclude()
     {
+        $this->authorize('conclude-talk', $this->talk);
+
         $user = auth()->user();
 
         if ($this->talk->user_id === $user->id) {

@@ -3,10 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class TalksCreate extends Component
 {
+    use AuthorizesRequests;
+
     public $post;
 
     public function user(): User
@@ -21,6 +24,8 @@ class TalksCreate extends Component
 
     public function store()
     {
+        $this->authorize('create-talk', $this->post);
+
         $talk = $this->user()->talks()->create([
             'post_id' => $this->post->id,
         ]);

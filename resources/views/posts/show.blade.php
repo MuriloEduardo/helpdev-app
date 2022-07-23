@@ -5,14 +5,17 @@
         </h2>
     </x-slot>
     <x-container>
-        <div class="mb-4">
+        <div class="mb-4 flex">
             <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
+            <p class="px-3">{{ $post->status->name }}</p>
         </div>
-
-        <livewire:talks-create :post="$post" />
 
         @if ($talk)
         <a href="{{ route('talks.show', $talk) }}" class="p-3 bg-gray-300 text-sm rounded">Ir para conversas</a>
+        @else
+        @can ('create-talk', $post)
+        <livewire:talks-create :post="$post" />
+        @endcan
         @endif
 
         <div class="mt-4">

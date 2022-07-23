@@ -47,7 +47,14 @@
                             @elseif (!$transaction->talk_id)
                             <span>Saldo adicionado</span>
                             @else
-                            <span>Recebimento de recompensa</span>
+                            <span>Recebimento de recompensa em </span>
+                            <a href="{{ route('posts.show', $transaction->talk->post) }}">{{
+                                $transaction->talk->post->title
+                                }}</a>
+                            <span> por </span>
+                            <a href="{{ route('users.show', $transaction->talk->user) }}">{{
+                                $transaction->talk->post->user->name }}</a>
+                            </div>
                             @endif
                     </td>
                     <td class="text-right">{{ $transaction->created_at }}</td>
