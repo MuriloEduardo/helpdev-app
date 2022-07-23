@@ -62,15 +62,20 @@
 
                         @if ($talk->completed_at || $talk->post->completed_at)
                         <div>
+                            @if ($talk->post->user_id === auth()->id())
                             @isset ($talk->completed_at)
                             <span>{{ $talk->user->name }}</span>
+                            <span>disse que vocês terminaram...</span>
                             @endisset
+                            @endif
 
+                            @if ($talk->user_id === auth()->id())
                             @isset ($talk->post->completed_at)
                             <span>{{ $talk->post->user->name }}</span>
-                            @endisset
-
                             <span>disse que vocês terminaram...</span>
+                            @endisset
+                            @endif
+
                         </div>
                         @endif
 
