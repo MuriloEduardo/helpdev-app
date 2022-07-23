@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <a href="{{ url('/') }}">
+                        <x-application-logo class="h-10 w-auto" />
                     </a>
                 </div>
 
@@ -31,7 +31,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden space-x-8 sm:flex sm:items-center sm:ml-6">
                 @auth
 
                 <a href="{{ route('transactions.index') }}" class="mr-3" title="Sua carteira">
@@ -105,10 +105,10 @@
                     </x-slot>
                 </x-dropdown>
                 @else
-                <a href="{{ route('login') }}" class="text-gray-700 dark:text-gray-500">Log in</a>
+                <x-nav-link href="{{ route('login') }}" class="h-16">Log in</x-nav-link>
 
                 @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 text-gray-700 dark:text-gray-500">Register</a>
+                <x-nav-link href="{{ route('register') }}" class="h-16">Register</x-nav-link>
                 @endif
                 @endauth
             </div>

@@ -24,6 +24,8 @@ class Notifications extends Component
     public function markAsRead()
     {
         $this->notification->markAsRead();
+
+        return redirect()->route('notifications.index');
     }
 
     public function render()

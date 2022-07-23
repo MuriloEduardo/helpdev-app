@@ -24,7 +24,6 @@ services:
             - sail
         depends_on:
             - mysql
-            - meilisearch
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -45,18 +44,6 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
-    meilisearch:
-        image: 'getmeili/meilisearch:v0.27.2'
-        ports:
-            - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
-        volumes:
-            - 'sail-meilisearch:/meili_data'
-        networks:
-            - sail
-        healthcheck:
-            test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
-            retries: 3
-            timeout: 5s
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
@@ -69,6 +56,4 @@ networks:
         driver: bridge
 volumes:
     sail-mysql:
-        driver: local
-    sail-meilisearch:
         driver: local
