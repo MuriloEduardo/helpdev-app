@@ -35,8 +35,8 @@
                 @auth
 
                 <a href="{{ route('transactions.index') }}" class="mr-3" title="Sua carteira">
-                    <div class="flex">
-                        <span class="mr-1">R${{ number_format(auth()->user()->balance, 2, ',', '.')
+                    <div class="flex items-center">
+                        <span class="mr-1 text-xs">R${{ number_format(auth()->user()->balance, 2, ',', '.')
                             }}</span>
                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -55,6 +55,7 @@
                     @if (auth()->user()->unreadNotifications()->count() )
                     <span class="absolute rounded-full -top-1 -right-1 px-1 bg-red-700 text-white text-xs">{{ auth()->user()->unreadNotifications()->count() }}</span>
                     @endif
+
                     <span class="svg-icon svg-icon-primary svg-icon-2x"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <path d="M17,12 L18.5,12 C19.3284271,12 20,12.6715729 20,13.5 C20,14.3284271 19.3284271,15 18.5,15 L5.5,15 C4.67157288,15 4,14.3284271 4,13.5 C4,12.6715729 4.67157288,12 5.5,12 L7,12 L7.5582739,6.97553494 C7.80974924,4.71225688 9.72279394,3 12,3 C14.2772061,3 16.1902508,4.71225688 16.4417261,6.97553494 L17,12 Z" fill="#000000" />
