@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TalksController;
@@ -49,4 +50,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/transactions', [TransactionsController::class, 'index'])->name('transactions.index');
     Route::get('/transactions/create', [TransactionsController::class, 'create'])->name('transactions.create');
+
+    Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications.index');
 });

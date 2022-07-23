@@ -31,7 +31,7 @@ class PostCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -64,7 +64,8 @@ class PostCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'post_id' => $this->post->id,
+            'user_id' => $this->post->user_id,
         ];
     }
 }
