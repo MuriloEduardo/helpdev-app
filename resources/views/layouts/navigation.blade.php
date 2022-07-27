@@ -52,9 +52,7 @@
                 </a>
 
                 <a href="{{ route('notifications.index') }}" class="relative mr-3" title="Notificações">
-                    @if (auth()->user()->unreadNotifications()->count() )
-                    <span class="absolute rounded-full -top-1 -right-1 px-1 bg-red-700 text-white text-xs">{{ auth()->user()->unreadNotifications()->count() }}</span>
-                    @endif
+                    <livewire:notification-tracker :countUnreadNotifications="auth()->user()->unreadNotifications()->count()" />
 
                     <span class="svg-icon svg-icon-primary svg-icon-2x"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

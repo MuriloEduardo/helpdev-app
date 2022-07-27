@@ -16,7 +16,7 @@ class PostCreated
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * The order instance.
+     * The post instance.
      *
      * @var \App\Models\Post
      */

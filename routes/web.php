@@ -52,4 +52,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/transactions/create', [TransactionsController::class, 'create'])->name('transactions.create');
 
     Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications.index');
+    Route::delete('/notifications', [NotificationsController::class, 'destroy'])->name('notifications.destroy');
 });
