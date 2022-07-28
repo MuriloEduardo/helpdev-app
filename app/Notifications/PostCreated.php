@@ -51,8 +51,7 @@ class PostCreated extends Notification implements ShouldQueue
             ->line('Esta sendo oferecido: R$' . number_format($this->post->amount, 2, ',', '.') . ' como recompensa.')
             ->line('Tecnologias envolvidas:')
             ->line($formattedTags)
-            ->action('Posso ajudar', route('posts.show', $this->post))
-            ->line('Obrigado por contribuir para nossa comunidade!');
+            ->action('Posso ajudar', route('posts.show', $this->post));
     }
 
     /**

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TalkAccepted extends Notification
+class TalkCompleted extends Notification
 {
     use Queueable;
 
@@ -43,9 +43,10 @@ class TalkAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject($this->talk->post->user->name . ' aceitou sua ajuda e já fez a garantia da recompensa!')
-            ->line('Agora você já pode mostrar como resolver o problema, com segurança de que irá receber sua recompensa.')
-            ->action('Comecem a trabalhar', route('talks.show', $this->talk));
+            ->subject('Ajuda concluida, mandaram bem!')
+            ->line('Como se sente agora que resolveu aquela sua dúvida?')
+            ->line('Massa né? Não esquece de contar pros seus amigos Devs também...')
+            ->action('Ver pedidos de ajuda com minhas habilidades', route('posts.index'));
     }
 
     /**

@@ -45,22 +45,20 @@ class TransactionCreated extends Notification
         if (!$this->transaction->talk_id) {
             $subjet = 'Saldo adicionado';
             $content = 'Parabéns! Agora você já pode receber ajuda de forma rápida!!!';
-            $amount = $this->transaction->amount;
-        }
-
-        if ($this->transaction->amount < 0) {
+        } elseif ($this->transaction->amount < 0) {
             $subjet = 'Pagamento descontado como garantia.';
             $content = 'Quantia descontada como garantia em ' . $this->transaction->talk->post->title . ' para ' . $this->transaction->talk->user->name;
-            $amount = $this->transaction->talk->post->amount;
+        } else {
+            $subjet = 'Daleeeeee!!! Sua recompensa de ' . 'R$' . number_format($this->transaction->talk->post->amount, 2, ',', '.') . ' já está na sua conta 🤑';
+            $content = 'Você mandou muito bem ao ajudar ' . $this->transaction->talk->post->user->name . '! Agora quando você estiver em apuros, travado, precisando de ajuda com código, você pode usar essa quantia para pedir ajuda de alguém também.';
         }
 
         return (new MailMessage)
             ->subject($subjet)
             ->line($content)
-            ->line('R$' . number_format($amount, 2, ',', '.'))
+            ->line('R$' . number_format($this->transaction->amount, 2, ',', '.'))
             ->line($this->transaction->created_at->diffForHumans())
-            ->action('Conferir', route('transactions.index'))
-            ->line('Obrigado por contribuir para nossa comunidade!');
+            ->action('Conferir', route('transactions.index'));
     }
 
     /**

@@ -28,8 +28,6 @@ class HandleTransactionCreated
      */
     public function handle(TransactionCreated $event)
     {
-        $users = [$event->transaction->user];
-
-        Notification::send($users, new NotificationsTransactionCreated($event->transaction));
+        Notification::send($event->transaction->user, new NotificationsTransactionCreated($event->transaction));
     }
 }
