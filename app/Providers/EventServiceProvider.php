@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Events\PostCreated;
 use App\Events\TalksAccepted;
 use App\Events\TalksCompleted;
+use App\Events\TalksCreated;
 use App\Events\TransactionCreated;
 use App\Listeners\HandleTalksAccepted;
 use App\Listeners\HandleTalksCompleted;
+use App\Listeners\HandleTalksCreated;
 use App\Listeners\HandleTransactionCreated;
 use App\Listeners\SendPostCreatedNotification;
 use Illuminate\Auth\Events\Registered;
@@ -37,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TalksCompleted::class => [
             HandleTalksCompleted::class,
+        ],
+        TalksCreated::class => [
+            HandleTalksCreated::class,
         ],
     ];
 
