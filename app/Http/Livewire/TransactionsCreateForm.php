@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Events\TransactionCreated;
 use App\Models\User;
 use Livewire\Component;
 
@@ -27,9 +28,11 @@ class TransactionsCreateForm extends Component
     {
         $this->validate();
 
-        $this->user()->transactions()->create([
+        $transaction = $this->user()->transactions()->create([
             'amount' => $this->amount,
         ]);
+
+        TransactionCreated::dispatch($transaction);
 
         return redirect()->route('transactions.index')
             ->with('message', 'Saldo adicionado com sucesso!');

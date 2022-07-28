@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Enums\TransactionStatus;
+use App\Events\TransactionCreated;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -31,11 +32,13 @@ class TalksConcludes extends Component
         }
 
         if ($this->talk->completed_at && $this->talk->post->completed_at) {
-            $this->talk->user->transactions()->create([
+            $transaction = $this->talk->user->transactions()->create([
                 'talk_id' => $this->talk->id,
                 'amount' => $this->talk->post->amount,
                 'status' => TransactionStatus::Confirmado,
             ]);
+
+            TransactionCreated::dispatch($transaction);
         }
 
         return redirect()

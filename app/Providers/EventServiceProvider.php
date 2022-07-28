@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use App\Events\PostCreated;
-use App\Listeners\SendPostNotification;
+use App\Events\TalksAccepted;
+use App\Events\TransactionCreated;
+use App\Listeners\HandleTalksAccepted;
+use App\Listeners\HandleTransactionCreated;
+use App\Listeners\SendPostCreatedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,7 +25,13 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         PostCreated::class => [
-            SendPostNotification::class,
+            SendPostCreatedNotification::class,
+        ],
+        TransactionCreated::class => [
+            HandleTransactionCreated::class,
+        ],
+        TalksAccepted::class => [
+            HandleTalksAccepted::class,
         ],
     ];
 

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Enums\PostStatus;
-use App\Enums\TransactionStatus;
+use App\Events\TalksAccepted;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -21,11 +21,7 @@ class TalksAccept extends Component
             'status' => PostStatus::ConversaAceita,
         ]);
 
-        $this->talk->post->user->transactions()->create([
-            'talk_id' => $this->talk->id,
-            'amount' => -$this->talk->post->amount,
-            'status' => TransactionStatus::Confirmado,
-        ]);
+        TalksAccepted::dispatch($this->talk);
 
         return redirect()
             ->route('talks.show', $this->talk);
