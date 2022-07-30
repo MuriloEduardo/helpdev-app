@@ -24,7 +24,7 @@
                     {{ $post->user->name }}
                 </a>
 
-                @elseif (!$user && !$post)
+                @elseif (!$post)
                 <span>Saldo adicionado</span>
                 
                 @else
