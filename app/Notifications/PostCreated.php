@@ -64,7 +64,6 @@ class PostCreated extends Notification implements ShouldQueue
     {
         return [
             'post_id' => $this->post->id,
-            'user_id' => $this->post->user_id,
         ];
     }
 }

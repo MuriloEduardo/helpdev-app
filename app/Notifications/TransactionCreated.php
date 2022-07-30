@@ -31,7 +31,7 @@ class TransactionCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**
@@ -69,8 +69,15 @@ class TransactionCreated extends Notification
      */
     public function toArray($notifiable)
     {
+        $post_id = null;
+
+        if ($this->transaction->talk) {
+            $post_id = $this->transaction->talk->post_id;
+        }
+
         return [
-            //
+            'post_id' => $post_id,
+            'amount' => $this->transaction->amount,
         ];
     }
 }

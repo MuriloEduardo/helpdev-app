@@ -31,7 +31,7 @@ class TalkAccepted extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**
@@ -43,7 +43,7 @@ class TalkAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject($this->talk->post->user->name . ' aceitou sua ajuda e já fez a garantia da recompensa!')
+            ->subject($this->talk->post->user->name . ' aceitou sua ajuda e já fez a garantia de recompensa!')
             ->line('Agora você já pode mostrar como resolver o problema, com segurança de que irá receber sua recompensa.')
             ->action('Comecem a trabalhar', route('talks.show', $this->talk));
     }
@@ -57,7 +57,7 @@ class TalkAccepted extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'talk_id' => $this->talk->id,
         ];
     }
 }

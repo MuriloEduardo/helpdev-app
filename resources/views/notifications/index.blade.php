@@ -23,7 +23,7 @@
         @endif
 
         @forelse ($unreadNotifications as $notification)
-        <livewire:notifications :notification="$notification" />
+        <livewire:notification :notification="$notification" />
         @empty
         <div>Sem notificações por aqui</div>
         @endforelse

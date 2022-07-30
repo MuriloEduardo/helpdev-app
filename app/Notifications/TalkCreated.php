@@ -31,7 +31,7 @@ class TalkCreated extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database', 'broadcast'];
     }
 
     /**
@@ -57,7 +57,7 @@ class TalkCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'talk_id' => $this->talk->id,
         ];
     }
 }
