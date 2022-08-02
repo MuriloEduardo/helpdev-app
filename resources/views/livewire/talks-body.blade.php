@@ -1,6 +1,4 @@
 <div>
-    @if (!$talk->completed_at && !$talk->post->completed_at)
-
     @if ($talk->post->user_id === auth()->id())
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 border-b border-gray-200">
         <h4 class="text-xl text-green-600"><strong>Opa!</strong> {{ $talk->user->name }} <strong>disse que sabe te ajudar!</strong></h4>
@@ -9,9 +7,9 @@
     </div>
 
     <div class="flex items-center">
-        @can ('accept-talk', $talk)
+        @if ($talk->post->user->balance >= $talk->post->amount && !$talk->post->accepted)
         <livewire:talks-accept :talk="$talk" />
-        @endcan
+        @endif
 
         @if ($talk->post->user->balance < $talk->post->amount && !$talk->post->accepted)
             <div class="px-3">
@@ -25,7 +23,6 @@
     </div>
     @endif
 
-    @can ('conclude-talk', $talk)
     <div class="my-3">
         @if ($talk->user_id === auth()->id())
         <div class="mb-3 bg-white shadow-sm sm:rounded-lg p-4 border-b border-gray-200">
@@ -48,11 +45,10 @@
         </div>
         @endif
 
+        @if ($talk->post->accepted)
         <livewire:talks-concludes :talk="$talk" />
+        @endif
     </div>
-    @endcan
-
-    @endif
 
     <livewire:messages-list :talk="$talk" />
 
