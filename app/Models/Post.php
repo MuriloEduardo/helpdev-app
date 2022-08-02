@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\PostStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,9 +17,9 @@ class Post extends Model
     protected $fillable = [
         'slug',
         'title',
-        'status',
         'amount',
         'content',
+        'accepted',
         'completed_at',
     ];
 
@@ -30,7 +29,7 @@ class Post extends Model
      * @var array
      */
     protected $casts = [
-        'status' => PostStatus::class,
+        'accepted' => 'boolean',
     ];
 
     public function user()

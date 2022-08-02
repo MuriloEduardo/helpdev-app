@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Enums\PostStatus;
 use App\Models\Post;
 use App\Models\Talk;
 use App\Models\User;
@@ -31,18 +30,18 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('create-talk', function (User $user, Post $post) {
             return $user->id !== $post->user_id
-                && $post->status === PostStatus::Aberta;
+                && $post->accepted === false;
         });
 
         Gate::define('accept-talk', function (User $user, Talk $talk) {
             return $user->id === $talk->post->user_id
                 && $user->balance >= $talk->post->amount
-                && $talk->post->status === PostStatus::Aberta;
+                && $talk->post->accepted === false;
         });
 
         Gate::define('conclude-talk', function (User $user, Talk $talk) {
             return ($user->id === $talk->user_id || $user->id === $talk->post->user_id)
-                && $talk->post->status === PostStatus::ConversaAceita;
+                && $talk->post->accepted === true;
         });
     }
 }

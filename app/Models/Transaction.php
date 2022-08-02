@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\TransactionStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,9 +15,9 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'status',
         'amount',
         'talk_id',
+        'confirmed',
     ];
 
     /**
@@ -27,7 +26,7 @@ class Transaction extends Model
      * @var array
      */
     protected $casts = [
-        'status' => TransactionStatus::class,
+        'confirmed' => 'boolean',
     ];
 
     public function talk()

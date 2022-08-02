@@ -33,9 +33,6 @@ class TalksConcludes extends Component
         if ($this->talk->completed_at && $this->talk->post->completed_at) {
             TalksCompleted::dispatch($this->talk);
         }
-
-        return redirect()
-            ->route('talks.show', $this->talk);
     }
 
     public function render()

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->tinyInteger('status')->default(0);
+            $table->boolean('confirmed')->default(false);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('talk_id')->nullable()->constrained();
             $table->timestamps();

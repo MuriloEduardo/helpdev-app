@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Enums\TransactionStatus;
 use App\Events\TalksAccepted;
 use App\Events\TransactionCreated;
 use App\Notifications\TalkAccepted;
@@ -31,9 +30,9 @@ class HandleTalksAccepted
     public function handle(TalksAccepted $event)
     {
         $transaction = $event->talk->post->user->transactions()->create([
+            'confirmed' => true,
             'talk_id' => $event->talk->id,
             'amount' => -$event->talk->post->amount,
-            'status' => TransactionStatus::Confirmado,
         ]);
 
         TransactionCreated::dispatch($transaction);

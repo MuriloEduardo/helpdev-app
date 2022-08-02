@@ -7,7 +7,9 @@
     <x-container>
         <div class="mb-4 flex">
             <span class="font-bold text-green-700">R${{ number_format($post->amount, 2, ',', '.') }}</span>
-            <p class="px-3">{{ $post->status->name }}</p>
+            <p class="px-3">
+                <x-posts-accepted :post="$post" />
+            </p>
         </div>
 
         @if ($talk)

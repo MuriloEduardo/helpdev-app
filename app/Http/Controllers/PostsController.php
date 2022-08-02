@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\PostStatus;
 use App\Models\Post;
 
 class PostsController extends Controller
@@ -14,7 +13,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('status', PostStatus::Aberta)
+        $posts = Post::where('accepted', false)
             ->get();
 
         return view('posts.index', [

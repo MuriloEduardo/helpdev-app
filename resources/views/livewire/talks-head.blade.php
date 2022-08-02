@@ -4,7 +4,9 @@
             {{ $talk->post->title }}
         </h2>
 
-        <div>{{ $talk->post->status->name }}</div>
+        <div>
+            <x-posts-accepted :post="$talk->post" :talk="$talk" />
+        </div>
     </div>
 
     <div>
