@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Talk extends Model
+class Message extends Model
 {
     use HasFactory;
 
@@ -15,28 +15,17 @@ class Talk extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'post_id',
-        'accepted',
-        'completed_at',
+        'talk_id',
+        'content',
     ];
 
-    public function post()
+    public function talk()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Talk::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
     }
 }

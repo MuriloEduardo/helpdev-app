@@ -24,7 +24,7 @@
         </div>
 
         <div class="bg-white shadow-sm sm:rounded-lg p-4 border-b border-gray-200">
-            <table class="w-full">
+            <table class="w-full border-separate border-spacing-y-5">
                 <thead class="text-left">
                     <tr>
                         <th>Valor</th>

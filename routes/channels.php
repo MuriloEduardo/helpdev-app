@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Talk;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+Broadcast::channel('notifications.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('talks.{talk}.messages', function ($user, Talk $talk) {
+    return (int) $user->id === (int) $talk->user_id
+        || (int) $user->id === (int) $talk->post->user_id;
 });

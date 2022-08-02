@@ -16,6 +16,7 @@ class TalksController extends Controller
         $user = auth()->user();
         $talk = Talk::where('user_id', $user->id)
             ->orWhereRelation('post', 'user_id', $user->id)
+            ->orderBy('created_at', 'desc')
             ->first();
 
         if (!$talk) {

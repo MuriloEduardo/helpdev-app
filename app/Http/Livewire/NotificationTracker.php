@@ -18,7 +18,7 @@ class NotificationTracker extends Component
     public function getListeners()
     {
         return [
-            "echo-private:App.Models.User.{$this->user->id},.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated" => 'sendNotify',
+            "echo-private:notifications.{$this->user->id},.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated" => 'sendNotify',
         ];
     }
 

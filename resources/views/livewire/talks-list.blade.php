@@ -1,7 +1,7 @@
 <div class="bg-white rounded py-3 overflow-hidden shadow-sm sm:rounded-lg border-b border-gray-200">
     @forelse($posts as $post)
     <div>
-        <h3 @class([ 'p-3 truncate hover:text-clip hover:whitespace-normal' , 'text-gray-400'=> $post->id === $talk->post->id,
+        <h3 @class([ 'p-3 truncate' , 'text-gray-400'=> $post->id === $talk->post->id,
             ])>{{ $post->title }}</h3>
 
         @foreach($post->talks as $_talk)

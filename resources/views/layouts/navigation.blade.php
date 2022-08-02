@@ -34,7 +34,7 @@
             <div class="hidden space-x-8 sm:flex sm:items-center sm:ml-6">
                 @auth
 
-                <a href="{{ route('transactions.index') }}" class="mr-3" title="Sua carteira">
+                <a href="{{ route('transactions.index') }}" title="Sua carteira">
                     <div class="flex items-center">
                         <span class="mr-1 text-xs">R${{ number_format(auth()->user()->balance, 2, ',', '.')
                             }}</span>
@@ -51,7 +51,7 @@
                     </div>
                 </a>
 
-                <a href="{{ route('notifications.index') }}" class="relative mr-3" title="Notificações">
+                <a href="{{ route('notifications.index') }}" class="relative" title="Notificações">
                     <livewire:notification-tracker :countUnreadNotifications="auth()->user()->unreadNotifications()->count()" />
 
                     <span class="svg-icon svg-icon-primary svg-icon-2x"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -63,7 +63,7 @@
                     </span>
                 </a>
 
-                <a href="{{ route('talks.index') }}" class="mr-3" title="Suas conversas">
+                <a href="{{ route('talks.index') }}" title="Suas conversas">
                     <span class="svg-icon svg-icon-primary svg-icon-2x">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

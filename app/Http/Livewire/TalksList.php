@@ -19,6 +19,7 @@ class TalksList extends Component
             'user_id' => $user->id,
         ])
             ->orWhereRelation('talks', 'user_id', $user->id)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $this->posts = $this->posts->map(function ($post) use ($user) {
