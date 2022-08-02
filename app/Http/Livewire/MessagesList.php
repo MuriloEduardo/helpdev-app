@@ -11,7 +11,7 @@ class MessagesList extends Component
     public function getListeners()
     {
         return [
-            "echo-private:talks.{$this->talk->id}.messages,MessageSent" => 'messageReceived',
+            "echo-private:talks.{$this->talk->id},MessageSent" => 'messageReceived',
         ];
     }
 

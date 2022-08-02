@@ -18,7 +18,7 @@ Broadcast::channel('notifications.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
-Broadcast::channel('talks.{talk}.messages', function ($user, Talk $talk) {
+Broadcast::channel('talks.{talk}', function ($user, Talk $talk) {
     return (int) $user->id === (int) $talk->user_id
         || (int) $user->id === (int) $talk->post->user_id;
 });

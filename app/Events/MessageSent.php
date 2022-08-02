@@ -40,6 +40,6 @@ class MessageSent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('talks.' . $this->message->talk_id . '.messages');
+        return new PrivateChannel('talks.' . $this->message->talk_id);
     }
 }
