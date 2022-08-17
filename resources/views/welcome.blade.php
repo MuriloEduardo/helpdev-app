@@ -43,7 +43,7 @@
         <header class="h-screen bg-green-700 text-white flex items-center justify-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-7xl mb-6">Seja bem-vindo Dev!</h1>
-                <h2 class="text-xl">Aqui nós programadores poderemos tirar dúvidas compensando por isso, para que a ajuda chegue mais rapida e...</h2>
+                <h2 class="text-xl">Aqui nós programadores poderemos tirar dúvidas recompensando por isso, para que a ajuda chegue mais rapida e...</h2>
                 <h2 class="mb-4">Para nós tentarmos ajudar alguém e ainda por cima ganhar uma recompensa.</h2>
                 <small>Entre ou cadastre-se</small>
             </div>
