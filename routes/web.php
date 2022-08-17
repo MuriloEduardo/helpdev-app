@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return Route::permanentRedirect('dashboard');
+    return Route::permanentRedirect('/', 'dashboard');
 });
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
