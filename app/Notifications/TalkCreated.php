@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TalkCreated extends Notification
+class TalkCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -43,6 +43,7 @@ class TalkCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->greeting('Ei Dev!')
             ->subject('Opa, ' . $this->talk->user->name . ' disse que saberia te ajudar a resolver!')
             ->line('Conversem tranquilamente, mas você só será descontado quando escolher aquele Dev que melhor irá resolver sua questão.')
             ->action('Ver conversa', route('talks.show', $this->talk));

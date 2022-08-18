@@ -45,7 +45,8 @@ class PostCreated extends Notification implements ShouldQueue
         $formattedTags = $this->post->tags->implode('title', ', ');
 
         return (new MailMessage)
-            ->subject('Ei Dev! ' . $this->post->user->name . ' está precisando de uma ajudinha...')
+            ->greeting('Ei Dev!')
+            ->subject($this->post->user->name . ' está precisando de uma ajudinha...')
             ->line('Veja o que esta sendo dito:')
             ->line($this->post->title)
             ->line('Esta sendo oferecido: R$' . number_format($this->post->amount, 2, ',', '.') . ' como recompensa.')

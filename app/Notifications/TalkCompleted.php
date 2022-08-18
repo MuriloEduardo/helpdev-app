@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TalkCompleted extends Notification
+class TalkCompleted extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -43,6 +43,7 @@ class TalkCompleted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->greeting('Ei Dev!')
             ->subject('Ajuda concluida, mandaram bem!')
             ->line('Como se sente agora que resolveu aquela sua dúvida?')
             ->line('Massa né? Não esquece de contar pros seus amigos Devs também...')
