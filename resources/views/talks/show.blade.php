@@ -3,10 +3,12 @@
         <livewire:talks-head :talk="$talk" />
     </x-slot>
     <x-container>
-        <div class="grid grid-cols-4 gap-6">
-            <livewire:talks-list :talk="$talk" />
+        <div class="flex">
+            <div class="w-1/4">
+                <livewire:talks-list :talk="$talk" />
+            </div>
 
-            <div class="col-span-3">
+            <div class="pl-6 w-full">
                 <livewire:talks-body :talk="$talk" />
             </div>
         </div>
