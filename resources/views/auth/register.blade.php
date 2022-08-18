@@ -26,6 +26,17 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Tags -->
+            <div class="mt-4">
+                <x-label for="tags" value="Quais tecnologias do seu interesse?" />
+
+                <x-multiple-select name="tags[]" id="tags" class="block w-full mt-1">
+                    @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                    @endforeach
+                </x-multiple-select>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

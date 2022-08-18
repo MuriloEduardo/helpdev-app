@@ -6,7 +6,7 @@
     </div>
 
     <div class="mb-6">
-        <x-label for="tags" value="Selecione quais suas habilidades?" />
+        <x-label for="tags" value="Quais tecnologias do seu interesse?" />
 
         <x-multiple-select wire:model="tags" id="tags" class="block w-full">
             @foreach ($allTags as $tag)

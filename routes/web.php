@@ -36,10 +36,10 @@ Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.cre
 Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('dashboard');        
 
     Route::get('/profile', function () {
         return view('profile');
