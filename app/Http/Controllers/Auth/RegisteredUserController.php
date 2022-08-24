@@ -18,12 +18,14 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('auth.register', [
             'tags' => Tag::all(),
+            'request' => $request,
         ]);
     }
 
